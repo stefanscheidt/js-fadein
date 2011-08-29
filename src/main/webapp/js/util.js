@@ -1,7 +1,7 @@
 /**
  * Utilities
  */
-(function(dependencies) {
+(function(window) {
     function addEventListener(field, type, callback) {
         if (field.addEventListener) {
             field.addEventListener(type, callback, false);
@@ -21,7 +21,7 @@
             return 0;
         } else {
             var floatSubstring = floatRegex.exec(value)[0];
-            return dependencies.parseFloat(floatSubstring);
+            return window.parseFloat(floatSubstring);
         }
     }
 
@@ -45,12 +45,8 @@
 
     // API
     window.util = {
-        dependencies: dependencies,
         parseFloat: parseFloat,
         opacity: opacity,
         addEventListener: addEventListener
     };
-})({
-    setTimeout: window.setTimeout,
-    parseFloat: window.parseFloat
-});
+})(window);

@@ -6,10 +6,10 @@ describe("fadein", function () {
         beforeEach(function () {
             field = "test";
             fadein = window.fadein;
-            setTimeoutSpy = spyOn(fadein.dependencies, 'setTimeout').andCallFake(function(callback) {
+            setTimeoutSpy = spyOn(window, 'setTimeout').andCallFake(function(callback) {
                 callback();
             });
-            opacitySpy = spyOn(fadein.dependencies, 'opacity');
+            opacitySpy = spyOn(util, 'opacity');
         });
 
         it("should set the opacity to 1 in the end", function () {
