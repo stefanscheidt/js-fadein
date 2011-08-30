@@ -3,6 +3,7 @@ describe("util", function () {
     var fixture;
 
     describe("for parseFloat", function() {
+
         it("should return undefined for undefined", function () {
             expect(util.parseFloat(undefined)).not.toBeDefined();
         });
@@ -18,6 +19,7 @@ describe("util", function () {
         it("should return the number from a string with numbers and characters", function () {
             expect(util.parseFloat('asdf1.5asdf')).toEqual(1.5);
         });
+
     });
 
     describe("for opacity", function() {
@@ -44,5 +46,7 @@ describe("util", function () {
             util.opacity(field, 0);
             expect(util.opacity(field)).toEqual(0);
         });
+
     });
+
 });

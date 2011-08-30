@@ -2,6 +2,9 @@
  * Utilities
  */
 (function(window) {
+
+    var floatRegex = /(\d|\.)+/;
+
     function addEventListener(field, type, callback) {
         if (field.addEventListener) {
             field.addEventListener(type, callback, false);
@@ -12,24 +15,10 @@
         }
     }
 
-    var floatRegex = /(\d|\.)+/;
-
-    function parseFloat(value) {
-        if (value === undefined) {
-            return undefined;
-        } else if (!value) {
-            return 0;
-        } else {
-            var floatSubstring = floatRegex.exec(value)[0];
-            return window.parseFloat(floatSubstring);
-        }
-    }
-
     function opacity(field, value) {
         if (value === undefined) {
             if (field.style.opacity === undefined) {
                 return parseFloat(field.style.filter) / 100;
-
             } else {
                 return parseFloat(field.style.opacity);
             }
@@ -43,10 +32,22 @@
         }
     }
 
+    function parseFloat(value) {
+        if (value === undefined) {
+            return undefined;
+        } else if (!value) {
+            return 0;
+        } else {
+            var floatSubstring = floatRegex.exec(value)[0];
+            return window.parseFloat(floatSubstring);
+        }
+    }
+
     // API
     window.util = {
-        parseFloat: parseFloat,
+        addEventListener: addEventListener,
         opacity: opacity,
-        addEventListener: addEventListener
+        parseFloat: parseFloat
     };
+
 })(window);

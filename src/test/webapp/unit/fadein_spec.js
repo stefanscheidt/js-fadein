@@ -1,11 +1,11 @@
 describe("fadein", function () {
+
     describe("for execute", function() {
 
         var field, setTimeoutSpy, opacitySpy;
 
         beforeEach(function () {
             field = "test";
-            fadein = window.fadein;
             setTimeoutSpy = spyOn(window, 'setTimeout').andCallFake(function(callback) {
                 callback();
             });
@@ -20,11 +20,12 @@ describe("fadein", function () {
         it("should call opacity with range from 0 to 1 in steps of 0.01", function () {
             fadein.execute(field);
             expect(opacitySpy.callCount).toEqual(100);
-            for (var i=0; i<100; i++) {
+            for (var i = 0; i < 100; i++) {
                 expect(opacitySpy.argsForCall[i][0]).toBe(field);
-                expect(opacitySpy.argsForCall[i][1]).toEqual((i+1)/100);
+                expect(opacitySpy.argsForCall[i][1]).toEqual((i + 1) / 100);
 
             }
         });
     });
+
 });

@@ -4,19 +4,20 @@
     <script>opener && opener.instrument && opener.instrument(window);</script>
     <script src="js/util.js"></script>
     <script src="js/fadein.js"></script>
-
 </head>
 <body>
-    <div id="hello">Hello World</div>
-    <button id="fadein">Fadein</button>
 
-    <script>
-        var field = document.getElementById("hello");
-        util.opacity(field, 0);
-        var button = document.getElementById("fadein");
-        util.addEventListener(button, 'click', function() {
-            fadein.execute(field);
-        });
-    </script>
+<div id="hello">Hello World!</div>
+<button id="fadein">Fade in</button>
+
+<script>
+    var field = document.getElementById("hello");
+    util.opacity(field, 0);
+    var button = document.getElementById("fadein");
+    util.addEventListener(button, 'click', function() {
+        fadein.execute(field);
+    });
+</script>
+
 </body>
 </html>

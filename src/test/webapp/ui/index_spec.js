@@ -1,4 +1,5 @@
 describe("index", function () {
+
     it("should fade the hello div in when the button is clicked", function () {
         var win, field, button;
         loadHtml("/js-fadein/index.html");
@@ -16,4 +17,5 @@ describe("index", function () {
             expect(win.util.opacity(field)).toEqual(1);
         });
     });
+
 });
