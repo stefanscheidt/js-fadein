@@ -4,10 +4,18 @@
     <script>opener && opener.instrument && opener.instrument(window);</script>
     <script src="js/util.js"></script>
     <script src="js/fadein.js"></script>
+    <style>
+        .hello {
+            background-color: rgb(30,40,90); width:200px; height:200px;
+            color: white;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
 
-<div id="hello">Hello World!</div>
+<div id="hello" class="hello">Hello World!</div>
 <button id="fadein">Fade in</button>
 
 <script>
