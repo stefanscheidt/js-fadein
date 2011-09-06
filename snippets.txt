@@ -1,0 +1,75 @@
+Drebuch zweite Demo:
+====================
+
+- jstd-unit.conf zeigen
+- JsTestDriver Server starten
+
+java -jar JsTestDriver-1.3.2.jar --port 9876 --runnerMode INFO
+
+- Browser fangen: Chrome, Safari, Mobile Safari
+- Unit-Tests ausführen
+
+java -jar JsTestDriver-1.3.2.jar --config jstd-unit.conf --tests all -reset
+
+- Chrome-Prozess beenden.
+- Alles zusammen starten:
+
+java -jar JsTestDriver-1.3.2.jar --port 9876 --runnerMode INFO --config jstd-unit.conf --tests all --reset --browser /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+
+Drehbuch erste Demo:
+====================
+- Vorher: Jetty starten
+- Projekt vorstellen (Maven, js-Verzeichnis, unit-Verzeichnis)
+- unit/util_spec.js anlegen
+- Suite für util anlegen, darin Suite für parseFloat anlegen
+- erste Spec implementieren: undefined for undefined
+- util_spec in UnitSpecRunner ergänzen
+- Test ausführen -> schlägt fehl.
+- util.js mit util-Namespace erstellen
+- util.js in UnitSpecRunner.html ergänzen
+- Test ausführen -> schlägt fehl.
+- parseFloat ergänzen
+- Test ausführen -> ist erfolgreich.
+- SpecRunner-UI erklären
+- zweite Spec "should return number from number string" implementieren
+- Implementierung mittels window.parseFloat ohne Fallunterscheidung für undefined
+- Test ausführen -> schlägt fehl.
+- Fehler in Entwicklerkonsole debuggen und analysieren.
+- Implementierung mittels if korrigieren
+
+util_spec.js:
+=============
+
+describe('util', function() {
+
+    describe('parseFloat', function() {
+
+        it('should return undefined for undefined', function() {
+            expect(util.parseFloat(undefined)).toBeUndefined();
+        });
+
+        it('should return the number for a number string', function() {
+            expect(util.parseFloat('12.2')).toBe(12.2);
+        });
+
+    });
+
+});
+
+util.js:
+========
+
+(function(window) {
+
+    function parseFloat(string) {
+        if (string===undefined) {
+            return undefined;
+        }
+        return window.parseFloat(string);
+    }
+
+    window.util = {
+        parseFloat: parseFloat
+    };
+
+})(window);
