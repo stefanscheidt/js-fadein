@@ -27,10 +27,7 @@ describe("util", function () {
         var field, fieldId;
 
         beforeEach(function () {
-            fieldId = "fieldId";
-            fixture = "<div id='" + fieldId + "'>Hallo</div>";
-            setFixtures(sandbox(fixture));
-            field = document.getElementById(fieldId);
+            field = document.createElement('div');
         });
 
         it("should initially have a defined value", function () {
