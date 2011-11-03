@@ -1,7 +1,5 @@
 describe("util", function () {
 
-    var fixture;
-
     describe("for parseFloat", function() {
 
         it("should return undefined for undefined", function () {
@@ -24,7 +22,7 @@ describe("util", function () {
 
     describe("for opacity", function() {
 
-        var field, fieldId;
+        var field;
 
         beforeEach(function () {
             field = document.createElement('div');
