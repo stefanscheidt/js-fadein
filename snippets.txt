@@ -4,17 +4,17 @@ Drebuch zweite Demo:
 - jstd-unit.conf zeigen
 - JsTestDriver Server starten
 
-java -jar misc/JsTestDriver-1.3.2.jar --port 9876 --runnerMode INFO
+java -jar misc/JsTestDriver.jar --port 9876 --runnerMode INFO
 
 - Browser fangen: Chrome, Safari, Mobile Safari
 - Unit-Tests ausführen
 
-java -jar misc/JsTestDriver-1.3.2.jar --config jstd-unit.conf --tests all -reset
+java -jar misc/JsTestDriver.jar --config jstd-unit.conf --tests all -reset
 
 - Chrome-Prozess beenden.
 - Alles zusammen starten:
 
-java -jar misc/JsTestDriver-1.3.2.jar --port 9876 --runnerMode INFO --config jstd-unit.conf --tests all --reset --browser /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+java -jar misc/JsTestDriver.jar --port 9876 --runnerMode INFO --config jstd-unit.conf --tests all --reset --browser /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
 
 Drehbuch erste Demo:
 ====================

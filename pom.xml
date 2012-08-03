@@ -16,11 +16,6 @@
         <jetty.stopPort>9595</jetty.stopPort>
         <jetty.version>7.6.4.v20120524</jetty.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- datasource properties -->
-        <jdbc.driverClassName>org.h2.Driver</jdbc.driverClassName>
-        <jdbc.url>jdbc:h2:mem:rylc-backend</jdbc.url>
-        <jdbc.username>rylc</jdbc.username>
-        <jdbc.password>rylc</jdbc.password>
     </properties>
 
     <build>
@@ -57,7 +52,7 @@
         <dependency>
             <groupId>com.google.jstestdriver</groupId>
             <artifactId>jstestdriver</artifactId>
-            <version>1.3.2</version>
+            <version>1.3.4.b</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
