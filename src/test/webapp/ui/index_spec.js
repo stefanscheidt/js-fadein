@@ -1,14 +1,19 @@
-describeUi("index", "/js-fadein/index.html", function () {
+describe("index", function () {
+    var uit = uitest.current;
+    uit.feature("timeoutSensor", "intervalSensor");
+
+    uit.url("/js-fadein/index.html");
 
     it("should fade the hello div in when the button is clicked", function () {
-        var win, field, button;
-        runs(function() {
+        var field;
+        var button;
+        uit.runs(function(document, util) {
             field = document.getElementById('hello');
             button = document.getElementById('fadein');
             expect(util.opacity(field)).toEqual(0);
-            simulate(button, 'click');
+            button.click();
         });
-        runs(function () {
+        uit.runs(function (util) {
             expect(util.opacity(field)).toEqual(1);
         });
     });

@@ -11,7 +11,7 @@ describe("fadein", function () {
                 fadein.execute('dummyField');
             });
             waitsFor(function() {
-                return lastOpacityValue()===1;
+                return lastOpacityValue() === 1;
             });
             runs(function() {
                 // some other expectations

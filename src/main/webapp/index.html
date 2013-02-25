@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript">eval(sessionStorage.jasmineui);</script>w
+    <!-- make page testable for uitest.js -->
+    <script type="text/javascript">parent.uitest && parent.uitest.instrument(window);</script>
+    <!-- application scripts -->
     <script src="js/util.js"></script>
     <script src="js/fadein.js"></script>
+    <!-- styles -->
     <style>
         .hello {
             background-color: rgb(30,40,90); width:200px; height:200px;
@@ -20,8 +23,8 @@
 
 <script>
     var field = document.getElementById("hello");
-    util.opacity(field, 0);
     var button = document.getElementById("fadein");
+    util.opacity(field, 0);
     util.addEventListener(button, 'click', function() {
         fadein.execute(field);
     });
