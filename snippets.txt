@@ -44,7 +44,7 @@ util.js:
 (function(window) {
 
     function parseFloat(string) {
-        if (string===undefined) {
+        if (string === undefined) {
             return undefined;
         }
         return window.parseFloat(string);
