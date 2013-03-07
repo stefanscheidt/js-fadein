@@ -1,4 +1,4 @@
-Drehbuch erste Demo:
+Drehbuch erste Demo (Branch demo-start)
 ====================
 - Vorher: Jetty starten
 - Projekt vorstellen (Maven, js-Verzeichnis, unit-Verzeichnis)
@@ -56,6 +56,43 @@ util.js:
 
 })(window);
 
+Drebuch zweite Demo: (Branch master)
+====================
+
+- jstd-unit.conf zeigen
+- JsTestDriver Server starten
+
+java -jar misc/JsTestDriver.jar --port 9876 --runnerMode INFO
+
+- Browser fangen: Chrome, Safari, Mobile Safari
+- Unit-Tests ausführen
+
+java -jar misc/JsTestDriver.jar --config jstd-unit.conf --tests all -reset
+
+- Chrome-Prozess beenden.
+- Alles zusammen starten:
+
+java -jar misc/JsTestDriver.jar --port 9876 --runnerMode INFO --config jstd-unit.conf --tests all --reset --browser /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+
+
+Drehbuch dritte Demo ((Branch demo-ui))
+====================
+1. suite "index" schreiben
+  - mit uit.url, aber ohne uit.feature
+2. spec "should fade the hello div in when the button is clicked" schreiben,
+   nur mit uit.runs und leerem callback.
+2. laufen lasen -> schlägt fehl
+3. src/main/webapp/index.html anlegen,
+   aber noch mit leerem <body>-Tag.
+4. spec vervollständigen: ersten uit.runs callback füllen
+5. laufen lassen -> schlägt fehl
+6. Elemente hello und fadein ergänzen.
+7. spec vervollständigen: click und zweiten uit.runs callback
+    - Fragen: Was fehlt? -> Warten zw. den beiden uit.runs callbacks!
+    - uit.feature("timeoutSensor", "intervalSensor"); in spec dazu.
+8. laufen lassen, schlägt fehlt
+9. js/app.js in index.html einbinden.
+
 index_spec.js
 =============
 describe("index", function () {
@@ -80,20 +117,26 @@ describe("index", function () {
 
 });
 
-Drebuch zweite Demo:
-====================
+index.html
+==========
 
-- jstd-unit.conf zeigen
-- JsTestDriver Server starten
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- make page testable for uitest.js -->
+    <script type="text/javascript">parent.uitest && parent.uitest.instrument(window);</script>
+    <style>
+        .hello {
+            background-color: rgb(30,40,90); width:200px; height:200px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
 
-java -jar misc/JsTestDriver.jar --port 9876 --runnerMode INFO
+<div id="hello" class="hello">Hello World!</div>
+<button id="fadein">Fade in</button>
 
-- Browser fangen: Chrome, Safari, Mobile Safari
-- Unit-Tests ausführen
-
-java -jar misc/JsTestDriver.jar --config jstd-unit.conf --tests all -reset
-
-- Chrome-Prozess beenden.
-- Alles zusammen starten:
-
-java -jar misc/JsTestDriver.jar --port 9876 --runnerMode INFO --config jstd-unit.conf --tests all --reset --browser /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+</body>
+</html>
