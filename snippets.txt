@@ -84,7 +84,8 @@ Drehbuch dritte Demo ((Branch demo-ui))
 2. laufen lasen -> schlägt fehl
 3. src/main/webapp/index.html anlegen,
    aber noch mit leerem <body>-Tag.
-4. spec vervollständigen: ersten uit.runs callback füllen
+4. spec vervollständigen: ersten uit.runs callback füllen,
+   bis auf Prüfung opacity.
 5. laufen lassen -> schlägt fehl
 6. Elemente hello und fadein ergänzen.
 7. spec vervollständigen: click und zweiten uit.runs callback
@@ -107,8 +108,8 @@ describe("index", function () {
         uit.runs(function(document, util) {
             field = document.getElementById('hello');
             button = document.getElementById('fadein');
-            expect(util.opacity(field)).toEqual(0);
             button.click();
+            expect(util.opacity(field)).toEqual(0);
         });
         uit.runs(function (util) {
             expect(util.opacity(field)).toEqual(1);
@@ -125,18 +126,32 @@ index.html
 <head>
     <!-- make page testable for uitest.js -->
     <script type="text/javascript">parent.uitest && parent.uitest.instrument(window);</script>
+    <!-- application scripts -->
+    <script src="js/util.js"></script>
+    <script src="js/fadein.js"></script>
+    <!-- styles -->
     <style>
         .hello {
             background-color: rgb(30,40,90); width:200px; height:200px;
             color: white;
             text-align: center;
         }
+
     </style>
 </head>
 <body>
 
 <div id="hello" class="hello">Hello World!</div>
 <button id="fadein">Fade in</button>
+
+<script>
+    var field = document.getElementById("hello");
+    var button = document.getElementById("fadein");
+    util.opacity(field, 0);
+    util.addEventListener(button, 'click', function() {
+        fadein.execute(field);
+    });
+</script>
 
 </body>
 </html>
