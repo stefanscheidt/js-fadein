@@ -1,4 +1,4 @@
-Drehbuch erste Demo:
+Drehbuch erste Demo (Branch demo-start)
 ====================
 - Vorher: Jetty starten
 - Projekt vorstellen (Maven, js-Verzeichnis, unit-Verzeichnis)
@@ -56,33 +56,7 @@ util.js:
 
 })(window);
 
-index_spec.js:
-=============
-
-describe("index", function () {
-    var uit = uitest.current;
-    uit.feature("timeoutSensor", "intervalSensor");
-
-    uit.url("/js-fadein/index.html");
-
-    it("should fade the hello div in when the button is clicked", function () {
-        var field;
-        var button;
-        uit.runs(function(document, util) {
-            field = document.getElementById('hello');
-            button = document.getElementById('fadein');
-            expect(util.opacity(field)).toEqual(0);
-            button.click();
-        });
-        uit.runs(function (util) {
-            expect(util.opacity(field)).toEqual(1);
-        });
-    });
-
-});
-
-
-Drebuch zweite Demo:
+Drebuch zweite Demo: (Branch master)
 ====================
 
 - jstd-unit.conf zeigen
@@ -99,3 +73,85 @@ java -jar misc/JsTestDriver.jar --config jstd-unit.conf --tests all -reset
 - Alles zusammen starten:
 
 java -jar misc/JsTestDriver.jar --port 9876 --runnerMode INFO --config jstd-unit.conf --tests all --reset --browser /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+
+
+Drehbuch dritte Demo ((Branch demo-ui))
+====================
+1. suite "index" schreiben
+  - mit uit.url, aber ohne uit.feature
+2. spec "should fade the hello div in when the button is clicked" schreiben,
+   nur mit uit.runs und leerem callback.
+2. laufen lasen -> schlägt fehl
+3. src/main/webapp/index.html anlegen,
+   aber noch mit leerem <body>-Tag.
+4. spec vervollständigen: ersten uit.runs callback füllen,
+   bis auf Prüfung opacity.
+5. laufen lassen -> schlägt fehl
+6. Elemente hello und fadein ergänzen.
+7. spec vervollständigen: click und zweiten uit.runs callback
+    - Fragen: Was fehlt? -> Warten zw. den beiden uit.runs callbacks!
+    - uit.feature("timeoutSensor", "intervalSensor"); in spec dazu.
+8. laufen lassen, schlägt fehlt
+9. js/app.js in index.html einbinden.
+
+index_spec.js
+=============
+describe("index", function () {
+    var uit = uitest.current;
+    uit.feature("timeoutSensor", "intervalSensor");
+
+    uit.url("/js-fadein/index.html");
+
+    it("should fade the hello div in when the button is clicked", function () {
+        var field;
+        var button;
+        uit.runs(function(document, util) {
+            field = document.getElementById('hello');
+            button = document.getElementById('fadein');
+            button.click();
+            expect(util.opacity(field)).toEqual(0);
+        });
+        uit.runs(function (util) {
+            expect(util.opacity(field)).toEqual(1);
+        });
+    });
+
+});
+
+index.html
+==========
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- make page testable for uitest.js -->
+    <script type="text/javascript">parent.uitest && parent.uitest.instrument(window);</script>
+    <!-- application scripts -->
+    <script src="js/util.js"></script>
+    <script src="js/fadein.js"></script>
+    <!-- styles -->
+    <style>
+        .hello {
+            background-color: rgb(30,40,90); width:200px; height:200px;
+            color: white;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="hello" class="hello">Hello World!</div>
+<button id="fadein">Fade in</button>
+
+<script>
+    var field = document.getElementById("hello");
+    var button = document.getElementById("fadein");
+    util.opacity(field, 0);
+    util.addEventListener(button, 'click', function() {
+        fadein.execute(field);
+    });
+</script>
+
+</body>
+</html>
