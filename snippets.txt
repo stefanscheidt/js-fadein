@@ -108,8 +108,8 @@ describe("index", function () {
         uit.runs(function(document, util) {
             field = document.getElementById('hello');
             button = document.getElementById('fadein');
-            button.click();
             expect(util.opacity(field)).toEqual(0);
+            button.click();
         });
         uit.runs(function (util) {
             expect(util.opacity(field)).toEqual(1);
