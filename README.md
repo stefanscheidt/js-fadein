@@ -20,8 +20,8 @@ This projects demonstrates testdriven JavaScript development, using Jasmine, Jas
 
 *   Manuelles Ausführen der Tests mit Hilfe der Spec Runner:
     1.   Jetty mittels `mvn jetty:run` starten.
-    1.   Zum Ausführen von Unit Tests in Chrome den [Unit Spec Runner](http://localhost:8585/js-fadin/UnitSpecRunner.html) aufrufen.
-    1.   Zum Ausführen von UI Tests in Chrome den [UI Spec Runner](http://localhost:8585/js-fadin/UiSpecRunner.html) aufrufen.
+    1.   Zum Ausführen von Unit Tests in Chrome den [Unit Spec Runner](http://localhost:8585/js-fadein/UnitSpecRunner.html) aufrufen.
+    1.   Zum Ausführen von UI Tests in Chrome den [UI Spec Runner](http://localhost:8585/js-fadein/UiSpecRunner.html) aufrufen.
 
 *   Starten und Aufrufen der Web-App
     1.   Jetty starten mittels `mvn jetty:run`.
