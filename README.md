@@ -25,4 +25,4 @@ This projects demonstrates testdriven JavaScript development, using Jasmine, Jas
 
 *   Starten und Aufrufen der Web-App
     1.   Jetty starten mittels `mvn jetty:run`.
-    1.   [Startseite](http://localhost:8585/js-fadin) der App aufrufen.
+    1.   [Startseite](http://localhost:8585/js-fadein) der App aufrufen.
