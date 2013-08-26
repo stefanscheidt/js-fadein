@@ -7,21 +7,21 @@ This projects demonstrates testdriven JavaScript development, using Jasmine, Jas
     *   Apache Maven 3.0.4 oder neuer.
 
 *   Bauen des Projekts inkl. Integrationstests: `mvn clean verify -Pintegration`.
-    Dazu muss [Chrome](http://www.google.com/chrome) über den Kommandozeilen-Befehl `chrome` gestartet werden können.
-    Alternativ kann man Option `-Dbrowser=<Pfad zu Chrome>` beim Aufruf des mvn-Befehls angeben, beispielsweise wie folgt für OS X:
+    Dazu muss [Chrome](http://www.google.com/chrome) Ã¼ber den Kommandozeilen-Befehl `chrome` gestartet werden kÃ¶nnen.
+    Alternativ kann man Option `-Dbrowser=<Pfad zu Chrome>` beim Aufruf des mvn-Befehls angeben, beispielsweise wie folgt fÃ¼r OS X:
 
     <pre><code>$  mvn clean install -Pintegration -Dbrowser=/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome</code></pre>
 
-*   Manuelles Ausführen der Tests via JsTestDriver (für Un*x-Systeme):
+*   Manuelles AusfÃ¼hren der Tests via JsTestDriver (fÃ¼r Un*x-Systeme):
     1.   Jetty mittels `mvn jetty:run` starten.
-    1.  `jstd-server.sh` ausführen
-    1.   Einen Browser über die URL [http://localhost:9876](http://localhost:9876) mit JsTestDriver verbinden.
-    1.   Zum Ausführen der Tests `jstd-unit.sh` bzw. `jstd-ui.sh` aufrufen.
+    1.  `jstd-server.sh` ausfÃ¼hren
+    1.   Einen Browser Ã¼ber die URL [http://localhost:9876](http://localhost:9876) mit JsTestDriver verbinden.
+    1.   Zum AusfÃ¼hren der Tests `jstd-unit.sh` bzw. `jstd-ui.sh` aufrufen.
 
-*   Manuelles Ausführen der Tests mit Hilfe der Spec Runner:
+*   Manuelles AusfÃ¼hren der Tests mit Hilfe der Spec Runner:
     1.   Jetty mittels `mvn jetty:run` starten.
-    1.   Zum Ausführen von Unit Tests in Chrome den [Unit Spec Runner](http://localhost:8585/js-fadein/UnitSpecRunner.html) aufrufen.
-    1.   Zum Ausführen von UI Tests in Chrome den [UI Spec Runner](http://localhost:8585/js-fadein/UiSpecRunner.html) aufrufen.
+    1.   Zum AusfÃ¼hren von Unit Tests in Chrome den [Unit Spec Runner](http://localhost:8585/js-fadein/UnitSpecRunner.html) aufrufen.
+    1.   Zum AusfÃ¼hren von UI Tests in Chrome den [UI Spec Runner](http://localhost:8585/js-fadein/UiSpecRunner.html) aufrufen.
 
 *   Starten und Aufrufen der Web-App
     1.   Jetty starten mittels `mvn jetty:run`.
